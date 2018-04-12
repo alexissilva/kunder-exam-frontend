@@ -1,20 +1,21 @@
 <!-- Generated template for the BannerComponent component -->
 <div class="banner" *ngIf="show">
 	<ion-grid class="banner-plan" *ngIf="isPlan()" [ngStyle]="{'background-image': 'url('+ backgroundImg +')'}">
-		<ion-row>
-			<ion-col padding col-9>{{ productDescription }}</ion-col>
-			<ion-col padding col-3><button ion-button (click)=goToLink()>{{ buttonText }}</button></ion-col>
+		<ion-row padding>
+			<ion-col [ngStyle]="{'color':'white'}">{{ productDescription }}</ion-col>
+			<ion-col col-auto>
+				<button ion-button (click)=goToLink()>{{ buttonText }}</button>
+			</ion-col>
 		</ion-row>
 	</ion-grid>
 
-	<ion-grid class="banner-cellphone" *ngIf="isCellphone()">
+	<ion-grid class="banner-cellphone" *ngIf="isCellphone()" [ngStyle]="{'background-color':'#eee'}">
 		<ion-row>
-			<ion-col padding col-4><ion-img width="100" height="100" src={{productImg}}></ion-img></ion-col>
+			<ion-col padding col-4><ion-img width="90" height="90" src={{productImg}}></ion-img></ion-col>
 			<ion-col padding col-8>
 				<div>
-					{{ productName }}
-					<br><br>
-					{{ productDescription }}
+					<p><strong>{{ productName }}</strong></p>
+					<p>{{ productDescription }}</p>
 				</div>
 			</ion-col>
 		</ion-row>

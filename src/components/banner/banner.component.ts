@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { ApiRestProvider } from '../../providers/api-rest/api-rest';
 
 /**
 * Generated class for the BannerComponent component.
@@ -23,29 +24,23 @@ export class BannerComponent {
 	productName: string;
 	productDescription: string;
 
-	constructor(private iab: InAppBrowser) {
+	constructor(private iab: InAppBrowser, private api: ApiRestProvider) {
+		this.api.getBannerInfo().then(
+			data => {
+				var info = data["product"];
+				this.show = info["show"];
+				this.type = info["type"];
+				this.backgroundImg = info["backgroundImg"];
+				this.buttonText = info["buttonText"];
+				this.link = info["link"];
+				this.productId = info["productId"];
+				this.productImg = info["productImg"];
+				this.productName = info["productName"];
+				this.productDescription = info["productDescription"];
+				console.log(info);
 
-		var info = {
-			show: true,
-	    	type: "cellphone",
-	    	backgroundImg: "https://image.freepik.com/free-vector/geometric-grey-background_1055-3147.jpg",
-	    	buttonText: "Ver",
-	    	link: "http://www.kunder.cl",
-	    	productId: "009263",
-	    	productImg: "https://s3.amazonaws.com/kunder-exam/frontend/cellphones/S8_front.png",
-	    	productName: "Samsung Galaxy S8",
-	    	productDescription: "Aprovecha el descuento exclusivo en este equipo contratando un plan"
-		};
-
-		this.show = info["show"];
-		this.type = info["type"];
-		this.backgroundImg = info["backgroundImg"];
-		this.buttonText = info["buttonText"];
-		this.link = info["link"];
-		this.productId = info["productId"];
-		this.productImg = info["productImg"];
-		this.productName = info["productName"];
-		this.productDescription = info["productDescription"];
+				this.show = true;
+		});
 
 	}
 
