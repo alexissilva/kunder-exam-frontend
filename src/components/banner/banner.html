@@ -1,0 +1,22 @@
+<!-- Generated template for the BannerComponent component -->
+<div class="banner" *ngIf="show">
+	<ion-grid class="banner-plan" *ngIf="isPlan()" [ngStyle]="{'background-image': 'url('+ backgroundImg +')'}">
+		<ion-row>
+			<ion-col padding col-9>{{ productDescription }}</ion-col>
+			<ion-col padding col-3><button ion-button (click)=goToLink()>{{ buttonText }}</button></ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-grid class="banner-cellphone" *ngIf="isCellphone()">
+		<ion-row>
+			<ion-col padding col-4><ion-img width="100" height="100" src={{productImg}}></ion-img></ion-col>
+			<ion-col padding col-8>
+				<div>
+					{{ productName }}
+					<br><br>
+					{{ productDescription }}
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</div>
